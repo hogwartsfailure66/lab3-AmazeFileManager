@@ -272,6 +272,12 @@ public class ItemPopupMenu extends PopupMenu implements PopupMenu.OnMenuItemClic
       case R.id.return_select:
         mainFragment.returnIntentResults(rowItem.generateBaseFile());
         return true;
+      case R.id.compress:
+        ArrayList<HybridFileParcelable> baseFiles = new ArrayList<HybridFileParcelable>();
+        HybridFileParcelable tmp = rowItem.generateBaseFile();
+        baseFiles.add(tmp);
+        GeneralDialogCreation.showCompressDialog(mainActivity, baseFiles, mainFragment.getMainFragmentViewModel().getCurrentPath());
+        return true;
     }
     return false;
   }
